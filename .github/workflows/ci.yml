@@ -25,23 +25,23 @@ jobs:
 
             - name: Restore dependencies
               run: dotnet restore
-                  source/WaniKani.Cli.sln
+                  source/WaniKani.sln
 
             - name: Build
               run: dotnet build
-                  source/WaniKani.Cli.sln
+                  source/WaniKani.sln
                   --configuration Release
 
             - name: Pack
               run: dotnet pack
-                  source/WaniKani.Cli.sln
+                  source/WaniKani.sln
                   --configuration Release
                   --output "${{ github.workspace }}/artifacts/packages"
                   ${{ env.version_suffix_args }}
 
             - name: Run unit tests
               run: dotnet test
-                  source/WaniKani.Cli.sln
+                  source/WaniKani.sln
                   --configuration Release
                   --filter="TestCategory!=Manual"
                   --logger "trx;LogFilePrefix=main"
